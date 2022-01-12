@@ -1,0 +1,532 @@
+.ex-230-item,
+#ex-110-draggable.swing>div,
+.ex-060-anim {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+.draggable {
+    display: inline-block;
+    padding: 1px 3px;
+    font-weight: bold;
+    color: white;
+    background-color: indianred;
+}
+
+.stage-s,
+.stage-m,
+.stage-l {
+    background-color: #d4d4d4;
+    margin-bottom: 1em;
+}
+
+.col>.stage-s,
+.col>.stage-m,
+.col>.stage-l {
+    margin-bottom: 0;
+}
+
+.stage-s {
+    height: 120px;
+}
+
+.stage-m {
+    height: 640px;
+    width: 640px;
+}
+
+.stage-l {
+    height: 280px;
+}
+
+.snap-point {
+    position: absolute;
+    width: 0;
+    height: 0;
+    margin-left: -2px;
+    margin-top: -2px;
+    border: 2px solid #24c4f1;
+}
+
+.snap-line-h {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 0;
+    margin-top: -1px;
+    border: solid #24c4f1;
+    border-width: 1px 0;
+}
+
+.snap-line-v {
+    position: absolute;
+    top: 0;
+    width: 0;
+    height: 100%;
+    margin-left: -1px;
+    border: solid #24c4f1;
+    border-width: 0 1px;
+}
+
+#ex-020-stage {
+    display: inline-block;
+    overflow: hidden;
+    width: 400px;
+    height: 240px;
+    background-color: #5c7194;
+}
+
+#ex-020-stage rect {
+    fill: #d4d4d4;
+}
+
+#ex-020-stage circle {
+    fill: indianred;
+}
+
+#ex-020-stage line {
+    stroke: #24c4f1;
+    stroke-width: 2px;
+}
+
+#ex-020-stage path {
+    fill: none;
+    stroke: #177cf3;
+    stroke-width: 8px;
+}
+
+#ex-020-slider {
+    display: inline-block;
+    margin-right: 20px;
+    width: 4px;
+    height: 240px;
+    border-radius: 2px;
+    background-color: #ccc;
+    position: relative;
+}
+
+#ex-020-pointer {
+    position: absolute;
+    left: -6px;
+    top: 108px;
+    width: 16px;
+    height: 24px;
+    background-color: indianred;
+    border-radius: 8px;
+}
+
+#ex-030-stage {
+    width: 400px;
+    position: relative;
+}
+
+#ex-030-port {
+    position: absolute;
+    left: 40px;
+    top: 64px;
+    background-color: #24c4f1;
+}
+
+#ex-030-line {
+    top: 160px;
+    width: 180px;
+}
+
+#ex-030-grid {
+    position: absolute;
+    left: 180px;
+    top: 0;
+    width: 220px;
+    height: 240px;
+    background-image: url("../img/grid-net-40.png");
+}
+
+#ex-040-stage {
+    /* width: 100%; */
+    position: relative;
+    display: block;
+}
+
+#ex-040-wall1 {
+    position: absolute;
+    left: 100px;
+    top: 64px;
+    width: 120px;
+    height: 100px;
+    background-color: #f7f5ee;
+}
+
+#ex-040-wall2 {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+#ex-040-wall2 path {
+    fill: #f7f5ee;
+}
+
+#ex-050-stage {
+    width: 400px;
+    position: relative;
+}
+
+#ex-050-stage-in {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 160px;
+    height: 100px;
+    border-top: 60px solid #f7f5ee;
+    border-right: 80px solid #f7f5ee;
+}
+
+#ex-050-draggable {
+    position: absolute;
+    right: 0;
+}
+
+#ex-060-stage {
+    width: 400px;
+    position: relative;
+}
+
+#ex-060-port {
+    position: absolute;
+    left: 40px;
+    top: 64px;
+    background-color: #24c4f1;
+}
+
+#ex-060-draggable {
+    position: absolute;
+    left: 40px;
+    top: 64px;
+}
+
+#ex-060-grid {
+    position: absolute;
+    left: 180px;
+    top: 0;
+    width: 220px;
+    height: 240px;
+    background-image: url("../img/grid-net-40.png");
+}
+
+.ex-060-anim {
+    transition-property: transform;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in;
+}
+
+#ex-090-stage {
+    height: 0;
+    margin-bottom: 4em;
+}
+
+#ex-100-draggable {
+    display: inline-block;
+    padding: 5px 5px 30px;
+    background-color: #37506d;
+}
+
+#ex-110-draggable {
+    width: 78px;
+    height: 78px;
+}
+
+#ex-110-draggable>div {
+    width: 78px;
+    height: 78px;
+}
+
+#ex-110-draggable.cat>div {
+    background-image: url("../img/cat-0.png");
+    background-repeat: no-repeat;
+    background-position: center top;
+}
+
+#ex-110-draggable.lift>div {
+    background-image: url("../img/cat-1.png");
+}
+
+#ex-110-draggable.swing>div {
+    -webkit-animation-name: ex-110-draggable-swing;
+    animation-name: ex-110-draggable-swing;
+    -webkit-animation-duration: 0.4s;
+    animation-duration: 0.4s;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+    animation-direction: alternate;
+    transform-origin: center 5%;
+}
+
+#ex-110-draggable>div>div {
+    height: 32px;
+}
+
+@-webkit-keyframes ex-110-draggable-swing {
+    from {
+        transform: rotate(15deg);
+    }
+    to {
+        transform: rotate(-15deg);
+    }
+}
+
+@keyframes ex-110-draggable-swing {
+    from {
+        transform: rotate(15deg);
+    }
+    to {
+        transform: rotate(-15deg);
+    }
+}
+
+#ex-120-stage {
+    position: relative;
+}
+
+#ex-120-point {
+    left: 160px;
+    top: 64px;
+}
+
+#ex-120-point div {
+    position: absolute;
+}
+
+#ex-120-point>div {
+    right: 0;
+    bottom: 100%;
+    line-height: 1;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+#ex-120-point>div>div {
+    right: 0;
+    bottom: 100%;
+}
+
+#ex-120-line {
+    left: 360px;
+}
+
+#ex-120-line div {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    white-space: nowrap;
+}
+
+#ex-120-rect {
+    position: absolute;
+    left: 520px;
+    top: 60px;
+    width: 164px;
+    height: 54px;
+}
+
+#ex-120-rect div {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    left: -1px;
+    border: 2px solid #24c4f1;
+}
+
+#ex-180-stage {
+    position: relative;
+}
+
+#ex-180-grid {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 300px;
+    height: 65%;
+    background-image: url("../img/grid-line-h-32.png");
+}
+
+#ex-190-stage {
+    position: relative;
+}
+
+#ex-190-point1,
+#ex-190-point2 {
+    top: 64px;
+}
+
+#ex-190-point1 div,
+#ex-190-point2 div {
+    position: absolute;
+}
+
+#ex-190-point1>div,
+#ex-190-point2>div {
+    right: 0;
+    bottom: 100%;
+    line-height: 1;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+#ex-190-point1>div>div,
+#ex-190-point2>div>div {
+    right: 20px;
+    bottom: 100%;
+}
+
+#ex-190-point1 {
+    left: 260px;
+}
+
+#ex-190-point2 {
+    left: 520px;
+}
+
+#ex-200-stage {
+    position: relative;
+}
+
+#ex-200-line1 div,
+#ex-200-line2 div {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    white-space: nowrap;
+}
+
+#ex-200-line1 {
+    left: 260px;
+}
+
+#ex-200-line2 {
+    left: 520px;
+}
+
+#ex-210-stage {
+    position: relative;
+}
+
+#ex-210-point1 {
+    left: 260px;
+    top: 64px;
+}
+
+#ex-210-point1 div {
+    position: absolute;
+}
+
+#ex-210-point1>div {
+    right: 0;
+    bottom: 100%;
+    line-height: 1;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+#ex-210-point1>div>div {
+    right: 20px;
+    bottom: 100%;
+}
+
+#ex-210-line2 {
+    left: 520px;
+}
+
+#ex-210-line2 div {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    white-space: nowrap;
+}
+
+#ex-210-draggable {
+    background-color: rgba(205, 92, 92, 0.6);
+}
+
+#ex-220-stage {
+    position: relative;
+}
+
+#ex-220-rect1 {
+    position: absolute;
+    left: 160px;
+    top: 30px;
+    width: 164px;
+    height: 54px;
+}
+
+#ex-220-rect1 div {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    left: -1px;
+    border: 2px solid #24c4f1;
+}
+
+#ex-220-rect2 {
+    position: absolute;
+    left: 460px;
+    top: 40px;
+    width: 120px;
+    height: 40px;
+}
+
+#ex-220-rect2 div {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    left: -1px;
+    border: 2px solid #24c4f1;
+}
+
+#ex-230-stage {
+    width: 200px;
+    background-color: #d4d4d4;
+}
+
+.ex-230-item {
+    display: block;
+    background-color: transparent;
+    text-align: center;
+    background-image: linear-gradient(#ee9292 0, #cd5c5c 10%, #cd5c5c 90%, #923b3b 100%);
+    position: relative;
+    transition-property: transform;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in;
+}
+
+.ex-230-item.lift {
+    color: #3bc9ff;
+}
+
+#ex-240-draggable {
+    position: absolute;
+}
+
+#ex-240-stage {
+    position: relative;
+    width: 900px;
+    background-color: #d4d4d4;
+}
+
+#ex-240-stage p {
+    margin-bottom: 0;
+}
+
+#ex-240-scroll {
+    width: 600px;
+    height: 400px;
+    overflow: scroll;
+    margin-bottom: 4em;
+}
