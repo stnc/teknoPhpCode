@@ -1,0 +1,67 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "58c3be4e1ad01bb08ef8198174fde9dc",
+    "packages": [
+        {
+            "name": "stnc/pdo-database",
+            "version": "2.2.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stnc/pdo-database.git",
+                "reference": "0288e56a048ede8cceb107c564ec3b8581443594"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stnc/pdo-database/zipball/0288e56a048ede8cceb107c564ec3b8581443594",
+                "reference": "0288e56a048ede8cceb107c564ec3b8581443594",
+                "shasum": ""
+            },
+            "require": {
+                "ext-pdo": "*",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Stnc\\Db\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "SELMAN TUNÇ",
+                    "email": "selmantunc@yandex.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A super simple function that returns the full SQL query from your PDO statements",
+            "homepage": "https://github.com/stnc/pdo-database",
+            "keywords": [
+                "mysql",
+                "pdo",
+                "sql"
+            ],
+            "support": {
+                "issues": "https://github.com/stnc/pdo-database/issues",
+                "source": "https://github.com/stnc/pdo-database/tree/2.2.4"
+            },
+            "time": "2019-04-30T21:13:56+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.0.0"
+}

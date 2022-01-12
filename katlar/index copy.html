@@ -1,0 +1,240 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Serialization demo</title>
+<link rel="stylesheet" href="https://www.jqueryscript.net/css/jquerysctipttop.css">
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.2.5/gridstack.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.2.5/gridstack-extra.min.css">
+ 
+
+<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.2.5/gridstack.min.js"></script>
+
+
+<style>
+  body {
+  background: #2c3e50;
+  color: #fff;
+}
+
+.sidebar {
+/*   background: lightblue; */
+  height: 100%;
+}
+
+.grid-stack {
+/*   background: #66a3ff; */
+}
+
+.sidebar-scroll {
+  overflow-y: scroll;
+}
+
+.grid-container {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  height: 542px;
+  background: grey;
+}
+
+.sidebar .grid-stack-item {
+
+  text-align: center;
+  line-height: 100px;
+  z-index: 10;
+  cursor: grab;
+  display: inline-block;
+}
+
+.grid-stack-item-content {
+  background: white;
+  color: #2c3e50;
+  font-family: 'Indie Flower';
+  text-align: center;
+  font-size: 20px;
+}
+
+.grid-stack .grid-stack-item[data-gs-width="4"] {
+  width: 100%
+}
+
+.grid-stack .grid-stack-item[data-gs-width="3"] {
+  width: 75%
+}
+
+.grid-stack .grid-stack-item[data-gs-width="2"] {
+  width: 50%
+}
+
+.grid-stack .grid-stack-item[data-gs-width="1"] {
+  width: 25%
+}
+
+.grid-stack .grid-stack-item[data-gs-x="3"] {
+  left: 75%
+}
+
+.grid-stack .grid-stack-item[data-gs-x="2"] {
+  left: 50%
+}
+
+.grid-stack .grid-stack-item[data-gs-x="1"] {
+  left: 25%
+}
+
+
+.sidebar .grid-stack-item[data-gs-width="1"] {
+  width: 100%
+}
+</style>
+</head>
+<body>
+  <div class="container-fluid">
+    <h1>Serialization demo</h1>
+    <a onClick="saveGrid()" class="btn btn-primary" href="#">Save</a>
+
+    <a onClick="saveFullGrid()" class="btn btn-primary" href="#">Save Full</a>
+    <a onClick="loadFullGrid()" class="btn btn-primary" href="#">Load Full</a>
+    <a onClick="clearGrid()" class="btn btn-primary" href="#">Clear</a>
+    <br/><br/>
+
+    <hr/>
+    <textarea id="saved-data" cols="100" rows="20" readonly="readonly"></textarea>
+  </div>
+
+
+
+    <section class="darklue" id="demo">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2>Tile drop</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-2 grid-container sidebar-scroll">
+            <div class="sidebar grid-stack-1"></div>
+          </div>
+          <div class="col-lg-10 grid-container">
+            <div class="grid-stack grid-stack-4"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+    <script>
+
+
+      $(function() {
+         var options = {
+           float: true,
+           width: 4,
+           height: 4,
+           animate: true,
+           always_show_resize_handle: true,
+           cellHeight: 110,
+           verticalMargin: 18,
+           horizontalMargin: 9,
+           placeholder_class: 'grid-stack-placeholder',
+           acceptWidgets: '.grid-stack-item'
+         };
+      
+         var grid = $('.grid-stack').gridstack(_.defaults(options));
+
+        // let grid = GridStack.init(options);
+    
+
+
+      
+         var items = [{
+           x: 0,
+           y: 0,
+           width: 1,
+           height: 1
+         }, {
+           x: 1,
+           y: 0,
+           width: 1,
+           height: 1
+         }, {
+           x: 2,
+           y: 0,
+           width: 1,
+           height: 1
+         }, {
+           x: 0,
+           y: 1,
+           width: 1,
+           height: 1
+         }, {
+           x: 3,
+           y: 1,
+           width: 1,
+           height: 1
+         }, {
+           x: 1,
+           y: 2,
+           width: 1,
+           height: 1
+         }];
+      
+         $('.grid-stack').each(function() {
+           var grid = $(this).data('gridstack');
+      
+           _.each(items, function(node) {
+             grid.addWidget($('<div><div class="grid-stack-item-content" /><div/>'),
+               node.x, node.y, node.width, node.height);
+           }, this);
+         });
+
+
+           // 2.x method
+           saveGrid = function() {
+      delete serializedFull;
+      serializedData = grid.save();
+      document.querySelector('#saved-data').value = JSON.stringify(serializedData, null, '  ');
+    }
+
+    // 3.1 full method saving the grid options + children (which is recursive for nested grids)
+    saveFullGrid = function() {
+      serializedFull = grid.save(true, true);
+      serializedData = serializedFull.children;
+      document.querySelector('#saved-data').value = JSON.stringify(serializedFull, null, '  ');
+    }
+
+    // 3.1 full method to reload from scratch - delete the grid and add it back from JSON
+    loadFullGrid = function() {
+      if (!serializedFull) return;
+      grid.destroy(true); // nuke everything
+      grid = GridStack.addGrid(document.querySelector('#gridCont'), serializedFull)
+    }
+
+    clearGrid = function() {
+      grid.removeAll();
+    }
+
+
+       });
+
+
+
+
+
+
+      </script>
+
+
+</body>
+
+</html>
