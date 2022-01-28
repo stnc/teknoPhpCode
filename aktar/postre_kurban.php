@@ -1,7 +1,7 @@
 <?php
 
 
-
+//https://ahmetimamoglu.com.tr/postgresql-turkce-karakter-hatasinin-cozumleri
 require_once 'vendor/autoload.php';
 define('DB_TYPE', 'pq');
 define('DB_HOST', 'localhost');
@@ -102,14 +102,14 @@ echo '<hr>';
 echo '<br>';
 echo '-----alt kısım----';
 
-
+return mb_convert_encoding($content, 'UTF-8', mb_detect_encoding($content, 'UTF-8, ISO-8859-9', true));
 
 $kisiOlustur = array(
    // 'id' => $kisilerRootvalue["no"],
     'user_id' => $kisilerRootvalue["ilk_kayit_yapan"],
-    'ad_soyad' =>   mb_convert_encoding($kisilerRootvalue["adi_soyadi"],'UTF-8','Windows-1254'),
+    'ad_soyad' =>   mb_convert_encoding($kisilerRootvalue["adi_soyadi"],'UTF-8','auto'),
     'telefon' =>$kisilerRootvalue["telefon"],
-    'email' => mb_convert_encoding($kisilerRootvalue["e_posta"],'UTF-8','Windows-1254'),
+    'email' => mb_convert_encoding($kisilerRootvalue["e_posta"],'UTF-8','auto'),
     'aciklama' =>"first data",
     'adres' =>"",
     'durum' =>1,
@@ -162,7 +162,7 @@ foreach ($kestikleri as $kestiklerivalue) {
         'bakiye' =>$kestiklerivalue["donation_price"],
         'hayvan_cinsi' =>$kestiklerivalue["donation_price"],
         'tarih' =>$kestiklerivalue["ilk_kayit_tarihi"],
-        'kim_adina' =>  mb_convert_encoding($kestiklerivalue["kim_adina"],'UTF-8','Windows-1254'),
+        'kim_adina' =>  mb_convert_encoding($kestiklerivalue["kim_adina"],'UTF-8','auto'),
         'sertifika' =>$kestiklerivalue["cert"],
         'created_at' => $kestiklerivalue["ilk_kayit_tarihi"],
         'updated_at' => $kestiklerivalue["son_duzenleme_tarihi"],
