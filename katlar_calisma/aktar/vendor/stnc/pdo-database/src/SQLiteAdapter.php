@@ -14,13 +14,15 @@ namespace Stnc\Db;
  */
 use \PDO;
 //implements \DBInterface
-class PostgresqlAdapter extends PDO implements DBInterface {
+class SQLiteAdapter extends PDO implements DBInterface {
 	public static $dbMysql = false;
 	
 	public  $tableName ;
 	private  $where ;
-	
-	function __construct() {
+	private  $dbName ;
+
+	function __construct($dbName) {
+	    $this->dbName=$dbName;
 		if (self::$dbMysql === false) {
 			$this->connect ();
 		}
@@ -29,91 +31,16 @@ class PostgresqlAdapter extends PDO implements DBInterface {
 	 * pdo connector
 	 */
 	private function connect() {
-	
 		try {
-			   $conStr = sprintf("pgsql:host=%s;port=%d;dbname=%s;user=%s;password=%s", 
-                DB_HOST, 
-                DB_PORT, 
-                DB_NAME, 
-               DB_USER, 
-                DB_PASS);
- 
-        	self::$dbMysql = new PDO($conStr);
-			
-		
-			self::$dbMysql->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, 'SET NAMES utf8'); // new -> stnc
-			self::$dbMysql->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-			self::$dbMysql->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			
-			self::$dbMysql->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-			
+            self::$dbMysql = new PDO("sqlite:".$this->dbName);
+            self::$dbMysql->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 		} catch ( PDOException $e ) {
-			
 			//  log handler
 		}
 	}
 	
-	
-	    /**
-	*	multiple connection 
-     * Static method get
-     *
-     * @param array $group            
-     * @return \lib\database
-     */
-    public static function get($group = false)
-    {
-        
-        // Determining if exists or it's not empty, then use default group defined in config
-        $group = ! $group ? array(
-            'type' => DB_TYPE,
-            'host' => DB_HOST,
-            'name' => DB_NAME,
-            'user' => DB_USER,
-            'pass' => DB_PASS
-        ) : $group;
-        
-        // Group information
-        $type = $group['type'];
-        $host = $group['host'];
-        $name = $group['name'];
-        $user = $group['user'];
-        $pass = $group['pass'];
-        
-        // ID for database based on the group information
-        $id = "$type.$host.$name.$user.$pass";
-        
-        // Checking if the same
-        if (isset(self::$instances[$id])) {
-            return self::$instances[$id];
-        }
-        
-        try {
-            // I've run into problem where
-            // SET NAMES "UTF8" not working on some hostings.
-            // Specifiying charset in DSN fixes the charset problem perfectly!
-            $instance = new Database("$type:host=$host;dbname=$name;charset=UTF8", $user, $pass, array(
-                PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => false
-            ));
-            
-            $instance->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, 'SET NAMES utf8'); // new -> stnc
-            $instance->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-            $instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            
-            $instance->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-            
-            
-            // Setting Database into $instances to avoid duplication
-            self::$instances[$id] = $instance;
-            
-            return $instance;
-        } catch (PDOException $e) {
-            // in the event of an error record the error to errorlog.html
-           // Logger::newMessage($e);
-           // logger::customErrorMsg();
-        }
-    }
+
 
 	
 	/**
@@ -123,13 +50,13 @@ class PostgresqlAdapter extends PDO implements DBInterface {
 	 * @param string $sql
 	 *        	sql query
 	 * @param array $array
-	 *        	named params
 	 * @param object $fetchMode
 	 * @return array returns an array of records
 	 * @example $q = " SELECT * FROM users";
 	 *          $dbMysql->fetchAll($q);
 	 */
 	public function fetchAll($sql, $array = array(), $fetchMode = 'array') {
+
 		if ($fetchMode == 'array') {
 			$fetchMode = PDO::FETCH_ASSOC;
 		} else if ($fetchMode == 'object') {
@@ -219,9 +146,8 @@ class PostgresqlAdapter extends PDO implements DBInterface {
 		$sql->execute(array('id' => $newId, 'name' => $name, 'color' => $color));
 		http://bit.ly/2sDDt25
 		*/
-		echo $sql="INSERT INTO $table ($fieldNames) VALUES ($fieldValues)";
-
-		$stmt = self::$dbMysql->prepare ( $sql );
+		$stmt = self::$dbMysql->prepare ( "INSERT INTO $table ($fieldNames) VALUES ($fieldValues)" );
+		
 		foreach ( $data as $key => $value ) {
 			$stmt->bindValue ( ":$key", $value );
 		}

@@ -1,0 +1,5 @@
+{
+    "require": {
+        "stnc/pdo-database": "^2.2"
+    }
+}

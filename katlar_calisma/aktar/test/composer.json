@@ -1,0 +1,24 @@
+{
+    "name": "stnc/pdo-database",
+    "description": "A super simple function that returns the full SQL query from your PDO statements",
+    "keywords": ["pdo", "mysql","sql"],
+    "homepage": "https://github.com/stnc/pdo-database",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "SELMAN TUNÇ",
+            "role": "Developer",
+             "email": "selmantunc@yandex.com"
+        }
+    ],
+ 
+    "require": {
+        "php": ">=5.4.0",
+         "ext-pdo": "*"
+    },
+    "autoload": {
+        "psr-4": {
+		"Stnc\\Db\\" : "src"
+        }
+    }
+}

@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Jasmine Spec Runner</title>
+    <script src="plain-draggable.js"></script>
+
+    <!-- <link rel="stylesheet" href="ex.css"> -->
+
+    <!-- https://www.pngtosvg.com/ -->
+    <!-- https://code-boxx.com/drag-drop-sortable-list-javascript/#sec-download -->
+    <!-- https://github.com/eyeofchaos/eocjsNewsticker -->
+    <!-- https://www.freecodecamp.org/news/use-svg-images-in-css-html/ -->
+
+    <!-- https://xd.adobe.com/view/8af0288c-7757-49d4-9de4-0439f021d723-dfa3/ -->
+
+    <!-- https://stackoverflow.com/questions/29991284/php-get-svg-tag-from-svg-file-and-show-it-in-html-in-div -->
+
+</head>
+<style>
+    #ex-040-stage {
+        /* width: 100%; */
+        position: relative;
+        display: block;
+    }
+    
+    #ex-040-draggable {
+        bottom: 122px;
+        height: 20px;
+        left: 30px;
+        right: 104.609375px;
+        top: 102px;
+        width: 74.609375px;
+        position: absolute;
+    }
+    
+    #ex-040-wall2 {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    
+    .col>.stage-m {
+        margin-bottom: 0;
+    }
+    
+    .stage-m-size {
+        height: 2000px;
+        width: 1024px;
+    }
+    
+    .draggable {
+        display: inline-block;
+        padding: 1px 3px;
+        font-weight: bold;
+        color: white;
+        background-color: indianred;
+    }
+    
+    .stage-m {
+        background-color: #d4d4d4;
+        margin-bottom: 1em;
+    }
+    
+    #ex-040-wall2 path {
+        fill: #fff;
+    }
+    /* <div id="ex-040-wall2" class="stage-m-size" style="  background-image: url(image2vector.svg);background-repeat:no-repeat;    background-position:left top;      background-size: cover;  background-attachment: fixed;color: white;"></div> */
+</style>
+<!-- ================ ex -->
+
+
+
+<div class="cols2">
+    <div class="col">
+        <p>You can control the moving with coordinates of the draggable element and a mouse pointer that drags.</p>
+    </div>
+    <div class="col">
+
+        <div id="ex-040-stage" class="stage-m stage-m-size">
+
+
+
+
+
+
+            <div id="ex-040-draggable" class="draggable">Drag This</div>
+        </div>
+
+    </div>
+</div>
+
+<script src="path-data-polyfill.js"></script>
+<script src="bezier.min.js"></script>
+<script>
+    window.addEventListener('load', function() {
+        'use strict';
+
+
+
+
+        var draggable = new PlainDraggable(document.getElementById('ex-040-draggable'), {
+            onDrag: function(moveTo) {
+                var rect = this.rect,
+                    moveToRect = {
+                        left: 150,
+                        top: 150,
+                        right: moveTo.left + rect.width,
+                        bottom: moveTo.top + rect.height
+                    };
+                console.log(rect)
+
+
+                // Check confliction if it's possible.
+            },
+
+        });
+
+        // draggable.containment = {
+        //     left: 20,
+        //     top: 0,
+        //     width: 800,
+        //     height: 600
+        // };
+    });
+</script>
+
+<body>
+</body>
+
+</html>

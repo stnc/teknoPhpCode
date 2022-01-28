@@ -14,7 +14,7 @@ namespace Stnc\Db;
  */
 use \PDO;
 //implements \DBInterface
-class PostgresqlAdapter extends PDO implements DBInterface {
+class MysqlAdapter extends PDO implements DBInterface {
 	public static $dbMysql = false;
 	
 	public  $tableName ;
@@ -29,24 +29,18 @@ class PostgresqlAdapter extends PDO implements DBInterface {
 	 * pdo connector
 	 */
 	private function connect() {
-	
+		$dsn = DB_TYPE . ":dbname=" . DB_NAME . ";host=" . DB_HOST;
 		try {
-			   $conStr = sprintf("pgsql:host=%s;port=%d;dbname=%s;user=%s;password=%s", 
-                DB_HOST, 
-                DB_PORT, 
-                DB_NAME, 
-               DB_USER, 
-                DB_PASS);
- 
-        	self::$dbMysql = new PDO($conStr);
+			self::$dbMysql = new PDO ( $dsn, DB_USER, DB_PASS, array (
+					PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\'',
+			    PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => false,
+			) );
 			
-		
 			self::$dbMysql->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, 'SET NAMES utf8'); // new -> stnc
 			self::$dbMysql->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 			self::$dbMysql->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			
 			self::$dbMysql->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-			
 
 		} catch ( PDOException $e ) {
 			
@@ -103,6 +97,11 @@ class PostgresqlAdapter extends PDO implements DBInterface {
             
             $instance->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
             
+            /*
+             * benim eski mvc den
+             * self::$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+             * self::$db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+             */
             
             // Setting Database into $instances to avoid duplication
             self::$instances[$id] = $instance;
@@ -219,9 +218,8 @@ class PostgresqlAdapter extends PDO implements DBInterface {
 		$sql->execute(array('id' => $newId, 'name' => $name, 'color' => $color));
 		http://bit.ly/2sDDt25
 		*/
-		echo $sql="INSERT INTO $table ($fieldNames) VALUES ($fieldValues)";
-
-		$stmt = self::$dbMysql->prepare ( $sql );
+		$stmt = self::$dbMysql->prepare ( "INSERT INTO $table ($fieldNames) VALUES ($fieldValues)" );
+		
 		foreach ( $data as $key => $value ) {
 			$stmt->bindValue ( ":$key", $value );
 		}

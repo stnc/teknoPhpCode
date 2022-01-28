@@ -1,0 +1,57 @@
+{
+    "packages": [
+        {
+            "name": "stnc/pdo-database",
+            "version": "2.2.4",
+            "version_normalized": "2.2.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stnc/pdo-database.git",
+                "reference": "0288e56a048ede8cceb107c564ec3b8581443594"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stnc/pdo-database/zipball/0288e56a048ede8cceb107c564ec3b8581443594",
+                "reference": "0288e56a048ede8cceb107c564ec3b8581443594",
+                "shasum": ""
+            },
+            "require": {
+                "ext-pdo": "*",
+                "php": ">=5.4.0"
+            },
+            "time": "2019-04-30T21:13:56+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Stnc\\Db\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "SELMAN TUNÇ",
+                    "email": "selmantunc@yandex.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A super simple function that returns the full SQL query from your PDO statements",
+            "homepage": "https://github.com/stnc/pdo-database",
+            "keywords": [
+                "mysql",
+                "pdo",
+                "sql"
+            ],
+            "support": {
+                "issues": "https://github.com/stnc/pdo-database/issues",
+                "source": "https://github.com/stnc/pdo-database/tree/2.2.4"
+            },
+            "install-path": "../stnc/pdo-database"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}

@@ -219,9 +219,8 @@ class PostgresqlAdapter extends PDO implements DBInterface {
 		$sql->execute(array('id' => $newId, 'name' => $name, 'color' => $color));
 		http://bit.ly/2sDDt25
 		*/
-		echo $sql="INSERT INTO $table ($fieldNames) VALUES ($fieldValues)";
-
-		$stmt = self::$dbMysql->prepare ( $sql );
+		$stmt = self::$dbMysql->prepare ( "INSERT INTO $table ($fieldNames) VALUES ($fieldValues)" );
+		
 		foreach ( $data as $key => $value ) {
 			$stmt->bindValue ( ":$key", $value );
 		}
