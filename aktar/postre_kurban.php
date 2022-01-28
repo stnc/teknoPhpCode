@@ -29,6 +29,16 @@ $db = new dbs();
 
 //use 3
 
+
+function replace_tr($text) {
+    $text = trim($text);
+    $search = array('Ç','ç','Ğ','ğ','ı','İ','Ö','ö','Ş','ş','Ü','ü',' ');
+    $replace = array('c','c','g','g','i','i','o','o','s','s','u','u','-');
+    $new_text = str_replace($search,$replace,$text);
+    return $new_text;
+    } 
+
+    
 function generateRandomString($length = 6) {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
@@ -99,7 +109,7 @@ $kisiOlustur = array(
     'user_id' => $kisilerRootvalue["ilk_kayit_yapan"],
     'ad_soyad' =>   mb_convert_encoding($kisilerRootvalue["adi_soyadi"],'UTF-8','Windows-1254'),
     'telefon' =>$kisilerRootvalue["telefon"],
-    'email' =>$kisilerRootvalue["e_posta"],
+    'email' => mb_convert_encoding($kisilerRootvalue["e_posta"],'UTF-8','Windows-1254'),
     'aciklama' =>"first data",
     'adres' =>"",
     'durum' =>1,
