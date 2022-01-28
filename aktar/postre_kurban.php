@@ -52,7 +52,7 @@ function generateRandomString($length = 6) {
 
 $dbPq = new Stnc\Db\PostgresqlAdapter();
 $tableName = 'adres_contact_datas_fil';
-echo $q = "SELECT * FROM " . $tableName . "  WHERE  kaynak='qurbani'  order by no desc  ";
+echo $q = "SELECT * FROM " . $tableName . "  WHERE  kaynak='qurbani'  order by no desc  limit 100";
 
 
 $host = "localhost";
@@ -102,7 +102,6 @@ echo '<hr>';
 echo '<br>';
 echo '-----alt kısım----';
 
-return mb_convert_encoding($content, 'UTF-8', mb_detect_encoding($content, 'UTF-8, ISO-8859-9', true));
 
 $kisiOlustur = array(
    // 'id' => $kisilerRootvalue["no"],
