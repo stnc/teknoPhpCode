@@ -352,8 +352,8 @@ class PostgresqlAdapter extends PDO implements DBInterface {
 	/**
 	 * son eklenenin id numarası
 	 */
-	function lastID() {
-		return self::$dbMysql->lastInsertId ();
+	function lastID($key) {
+		return self::$dbMysql->lastInsertId ($key);
 	}
 	
 	/**

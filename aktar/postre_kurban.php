@@ -42,7 +42,7 @@ function generateRandomString($length = 6) {
 
 $dbPq = new Stnc\Db\PostgresqlAdapter();
 $tableName = 'adres_contact_datas_fil';
-echo $q = "SELECT * FROM " . $tableName . "  WHERE  kaynak='qurbani'  order by no desc limit 10 ";
+echo $q = "SELECT * FROM " . $tableName . "  WHERE  kaynak='qurbani'  order by no desc  ";
 
 
 $host = "localhost";
@@ -95,9 +95,9 @@ echo '-----alt kısım----';
 
 
 $kisiOlustur = array(
-    'id' => $kisilerRootvalue["no"],
+   // 'id' => $kisilerRootvalue["no"],
     'user_id' => $kisilerRootvalue["ilk_kayit_yapan"],
-    'ad_soyad' => $kisilerRootvalue["adi_soyadi"],
+    'ad_soyad' =>   mb_convert_encoding($kisilerRootvalue["adi_soyadi"],'UTF-8','Windows-1254'),
     'telefon' =>$kisilerRootvalue["telefon"],
     'email' =>$kisilerRootvalue["e_posta"],
     'aciklama' =>"first data",
@@ -116,9 +116,11 @@ $dbPq->insert("sacrifice_kisiler", $kisiOlustur);
 
 
 
-$q = "select max(id) as data from sacrifice_kisiler";
-$row5= $dbPq->fetch ( $q );
-echo  $kisiID= $row5 ['data'];
+// $q = "select max(id) as data from sacrifice_kisiler";
+// $row5= $dbPq->fetch ( $q );
+// echo  $kisiID= $row5 ['data'];
+
+$kisiID = $dbPq->lastID('sacrifice_kisiler_id_seq');
 
 
 $q = "SELECT * FROM donation_donated_qurbani_fil WHERE contact_id=".$kisilerRootvalue["no"]." ";
@@ -150,7 +152,7 @@ foreach ($kestikleri as $kestiklerivalue) {
         'bakiye' =>$kestiklerivalue["donation_price"],
         'hayvan_cinsi' =>$kestiklerivalue["donation_price"],
         'tarih' =>$kestiklerivalue["ilk_kayit_tarihi"],
-        'kim_adina' =>$kestiklerivalue["kim_adina"],
+        'kim_adina' =>  mb_convert_encoding($kestiklerivalue["kim_adina"],'UTF-8','Windows-1254'),
         'sertifika' =>$kestiklerivalue["cert"],
         'created_at' => $kestiklerivalue["ilk_kayit_tarihi"],
         'updated_at' => $kestiklerivalue["son_duzenleme_tarihi"],
@@ -158,14 +160,15 @@ foreach ($kestikleri as $kestiklerivalue) {
     );
     $dbPq->insert("sacrifice_kurbanlar", $kurbanOlustur);
 
-    $q = "select max(id) as data from sacrifice_kurbanlar";
-    $row6= $dbPq->fetch ( $q );
-     $kurbanID= $row6 ['data'];
+    // $q = "select max(id) as data from sacrifice_kurbanlar";
+    // $row6= $dbPq->fetch ( $q );
+    //  $kurbanID= $row6 ['data'];
+     $kurbanID = $dbPq->lastID('sacrifice_kurbanlar_id_seq');
 
     $odemeOlustur1 = array(
         'user_id' => $kestiklerivalue["ilk_kayit_yapan"],
         'kurban_id' => $kurbanID,
-        'aciklama' => "İlk Eklenen Fiyat",
+        'aciklama' => "ilk Eklenen Fiyat",
 
         'makbuz' => "",
         'durum' => 0,
@@ -192,7 +195,7 @@ foreach ($kestikleri as $kestiklerivalue) {
 $odemeOlustur2 = array(
     'user_id' => $kestiklerivalue["ilk_kayit_yapan"],
     'kurban_id' => $kurbanID,
-    'aciklama' => "Ödeme Eklendi: ".$kestiklerivalue["donation_price"]." $ / Hesap Kapandı",
+    'aciklama' => "Odeme Eklendi: ".$kestiklerivalue["donation_price"]." $ / Hesap Kapandi",
     'makbuz' => "",
     'durum' => 1,
     'borc_durum' => 6,
