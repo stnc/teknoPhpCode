@@ -29,9 +29,9 @@ class MysqlAdapter extends PDO implements DBInterface {
 	 * pdo connector
 	 */
 	private function connect() {
-		$dsn = DB_TYPE . ":dbname=" . DB_NAME . ";host=" . DB_HOST;
+		$dsn = DB_TYPE2 . ":dbname=" . DB_NAME2 . ";host=" . DB_HOST2;
 		try {
-			self::$dbMysql = new PDO ( $dsn, DB_USER, DB_PASS, array (
+			self::$dbMysql = new PDO ( $dsn, DB_USER2, DB_PASS2, array (
 					PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\'',
 			    PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => false,
 			) );
