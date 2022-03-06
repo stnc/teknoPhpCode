@@ -1,0 +1,80 @@
+<div class="mod-haber ">				<div class="haber_blok">
+						<div class="yazi">
+				<h1><a href="/haber/14467/guney-kore-bilim-ve-teknoloji-enstitusu-staj-basvurulari-basladi.html">Güney Kore Bilim ve Teknoloji Enstitüsü Staj Başvuruları Başladı!</a></h1>
+				<p><a href="/haber/14467/guney-kore-bilim-ve-teknoloji-enstitusu-staj-basvurulari-basladi.html"></a></p>
+			</div>
+		</div>
+			<div class="haber_blok">
+						<div class="yazi">
+				<h1><a href="/haber/14463/tubitak-etkinlik-duzenleme-destegi-hk.html">TÜBİTAK Etkinlik Düzenleme Desteği Hk.</a></h1>
+				<p><a href="/haber/14463/tubitak-etkinlik-duzenleme-destegi-hk.html"></a></p>
+			</div>
+		</div>
+			<div class="haber_blok">
+						<div class="yazi">
+				<h1><a href="/haber/14458/tubitak-2244-sanayi-doktora-programi-cagriya-acildi.html">TÜBİTAK 2244 Sanayi Doktora Programı Çağrıya Açıldı!</a></h1>
+				<p><a href="/haber/14458/tubitak-2244-sanayi-doktora-programi-cagriya-acildi.html"></a></p>
+			</div>
+		</div>
+			<div class="haber_blok">
+						<div class="yazi">
+				<h1><a href="/haber/14439/ufuk2020-programi-enerji-verimliligi-cagrilari-basvuruya-acildi.html">UFUK2020 Programı Enerji Verimliliği Çağrıları Başvuruya Açıldı!</a></h1>
+				<p><a href="/haber/14439/ufuk2020-programi-enerji-verimliligi-cagrilari-basvuruya-acildi.html"></a></p>
+			</div>
+		</div>
+			<div class="haber_blok">
+						<div class="yazi">
+				<h1><a href="/haber/14437/uluslararasi-deneyimli-arastirmaci-dolasimi-destek-programi-hk.html">Uluslararası Deneyimli Araştırmacı Dolaşımı Destek Programı Hk.</a></h1>
+				<p><a href="/haber/14437/uluslararasi-deneyimli-arastirmaci-dolasimi-destek-programi-hk.html"></a></p>
+			</div>
+		</div>
+			<div class="haber_blok">
+						<div class="yazi">
+				<h1><a href="/haber/14424/turkiye-iskandinavya-eurostars-cagrisi-hk.html">Türkiye-İskandinavya Eurostars Çağrısı Hk.</a></h1>
+				<p><a href="/haber/14424/turkiye-iskandinavya-eurostars-cagrisi-hk.html"></a></p>
+			</div>
+		</div>
+			<div class="haber_blok">
+						<div class="yazi">
+				<h1><a href="/haber/14423/erc-starting-grant-ve-synergy-grant-cagrilari-acildi.html">ERC, Starting Grant ve Synergy Grant Çağrıları Açıldı!</a></h1>
+				<p><a href="/haber/14423/erc-starting-grant-ve-synergy-grant-cagrilari-acildi.html"></a></p>
+			</div>
+		</div>
+			<div class="haber_blok">
+						<div class="yazi">
+				<h1><a href="/haber/14422/kutup-1001-cagrisi-acildi.html">KUTUP 1001 Çağrısı Açıldı!</a></h1>
+				<p><a href="/haber/14422/kutup-1001-cagrisi-acildi.html"></a></p>
+			</div>
+		</div>
+			<div class="haber_blok">
+						<div class="yazi">
+				<h1><a href="/haber/14420/tubitak-arbis-kayitlari-hk.html">TÜBİTAK ARBİS Kayıtları Hk.</a></h1>
+				<p><a href="/haber/14420/tubitak-arbis-kayitlari-hk.html"></a></p>
+			</div>
+		</div>
+			<div class="haber_blok">
+						<div class="yazi">
+				<h1><a href="/haber/14419/avrupa-arastirma-konseyi-erc-proje-guclendirme-destegi-programi-cagriya-acildi.html">Avrupa Araştırma Konseyi (ERC) Proje Güçlendirme Desteği Programı Çağrıya Açıldı!</a></h1>
+				<p><a href="/haber/14419/avrupa-arastirma-konseyi-erc-proje-guclendirme-destegi-programi-cagriya-acildi.html"></a></p>
+			</div>
+		</div>
+			</div>
+
+
+
+			define( 'DB_NAME', 'u0297192_summitErciyesV2' );
+
+/** MySQL database username */
+define( 'DB_USER', 'u0297192_summitErciyesUsr' );
+
+/** MySQL database password */
+define( 'DB_PASSWORD', 'WP@l1~[pbnyD' );
+
+/** MySQL hostname */
+define( 'DB_HOST', 'localhost' );
+
+/** Database Charset to use in creating database tables. */
+define( 'DB_CHARSET', 'utf8' );
+
+/** The Database Collate type. Don't change this if in doubt. */
+define( 'DB_COLLATE', '' );

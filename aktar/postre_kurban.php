@@ -1,5 +1,7 @@
 <?php
+
 header('Content-Type: text/html; charset=utf-8');
+
 
 
 //https://ahmetimamoglu.com.tr/postgresql-turkce-karakter-hatasinin-cozumleri
@@ -53,7 +55,11 @@ function generateRandomString($length = 6) {
 
 $dbPq = new Stnc\Db\PostgresqlAdapter();
 $tableName = 'adres_contact_datas_fil';
+<<<<<<< HEAD
 echo $q = "SELECT * FROM " . $tableName . "  WHERE  kaynak='qurbani'  order by no desc ";
+=======
+echo $q = "SELECT * FROM " . $tableName . "  WHERE  kaynak='qurbani'  order by no desc  limit 100";
+>>>>>>> 40dc9ae61278136a576dcf7dd307640a710fb4db
 
 
 $host = "localhost";
@@ -107,9 +113,11 @@ echo '-----alt kısım----';
 $kisiOlustur = array(
    // 'id' => $kisilerRootvalue["no"],
     'user_id' => $kisilerRootvalue["ilk_kayit_yapan"],
-    'ad_soyad' =>   mb_convert_encoding($kisilerRootvalue["adi_soyadi"],'UTF-8','ISO-8859-9'),
+
+    'ad_soyad' =>   mb_convert_encoding($kisilerRootvalue["adi_soyadi"],'UTF-8','auto'),
     'telefon' =>$kisilerRootvalue["telefon"],
-    'email' => mb_convert_encoding($kisilerRootvalue["e_posta"],'UTF-8','ISO-8859-9'),
+    'email' => mb_convert_encoding($kisilerRootvalue["e_posta"],'UTF-8','auto'),
+
     'aciklama' =>"first data",
     'adres' =>"",
     'durum' =>1,
@@ -162,7 +170,11 @@ foreach ($kestikleri as $kestiklerivalue) {
         'bakiye' =>$kestiklerivalue["donation_price"],
         'hayvan_cinsi' =>$kestiklerivalue["donation_price"],
         'tarih' =>$kestiklerivalue["ilk_kayit_tarihi"],
-        'kim_adina' =>  mb_convert_encoding($kestiklerivalue["kim_adina"],'UTF-8','ISO-8859-9'),
+
+     //   'kim_adina' =>  mb_convert_encoding($kestiklerivalue["kim_adina"],'UTF-8','ISO-8859-9'),
+
+        'kim_adina' =>  mb_convert_encoding($kestiklerivalue["kim_adina"],'UTF-8','auto'),
+
         'sertifika' =>$kestiklerivalue["cert"],
         'created_at' => $kestiklerivalue["ilk_kayit_tarihi"],
         'updated_at' => $kestiklerivalue["son_duzenleme_tarihi"],
