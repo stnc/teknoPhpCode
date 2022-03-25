@@ -96,7 +96,8 @@
     </div>
 </div>
 
-
+<script src="path-data-polyfill.js"></script>
+<script src="bezier.min.js"></script>
 <script>
     window.addEventListener('load', function () {
         'use strict';
